@@ -1,5 +1,7 @@
 print("Hello World")
 
+
+nome="luis"
 #---------  Tipos de varivaeis----------------------
 numeroInt=1 #variavel  do tipo inteiro
 numeroFloat= 1.0 #variavel do tipo float 

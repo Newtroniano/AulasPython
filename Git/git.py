@@ -1,12 +1,19 @@
-print("Hello World")
+class Contador:
+    def __init__(self, limite):
+        self.limite = limite
+        self.atual = 0
 
-print("segundo commit")
+    def __iter__(self):
+        return self
 
-a=input("digite um numero")
-a = int(a)
+    def __next__(self):
+        if self.atual < self.limite:
+            self.atual += 1
+            return self.atual - 1
+        else:
+            raise StopIteration
 
-b=input("digite outro numero")
-b = int(b)
-
-
-print(a+b)
+# Uso
+contador = Contador(3)
+for numero in contador:
+    print(numero)
