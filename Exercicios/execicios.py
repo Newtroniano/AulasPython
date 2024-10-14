@@ -1,15 +1,31 @@
+# def soma ():
+#     try:
+#         a= int(input("Digite um numero"))
+#         b= int(input("Digite segundo numero"))
+#         return a + b
+#     except ValueError:
+#       print("digite apenas numeros não letras")
+#       return soma()
+     
 
-print(30%0)
+# print(soma())
 
+produtos = [
+    {"nome": "Arroz", "preço": 20.50},
+    {"nome": "Feijão", "preço": 7.80},
+    {"nome": "Macarrão", "preço": 4.30},
+    {"nome": "Leite", "preço": 5.20},
+    {"nome": "Açúcar", "preço": 3.50},
+    {"nome": "Café", "preço": 12.00},
+    {"nome": "Óleo", "preço": 8.90},
+    {"nome": "Sal", "preço": 1.80}
+]
 
-def func(arg):
-    if arg == 0:
-        return 0
-    else:
-        return (arg%2) + 10 * func(arg//2)
+def listprodutos(min, max, lista):
+#    criar uma lista para adicionar os produtos filtraddos
+#    for loop:
+#        se os preços >= min e  preços <= max:
+#          produtosPreco.append(produto)
 
-def funcao(x):
-    if x == 1:
-        return 1
-    else:
-        return x + funcao(x-1) * funcao(x-2)
+#    return produtosPreco.sort()    
+
