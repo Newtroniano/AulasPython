@@ -1,61 +1,91 @@
-palavrasProibidas = ["feio"]
+swearWords = ["feio"]
 
-def Saudacoes(nome):
+def greetings(name):
     import random
-    frases = ["Ola Meu nome é " + nome + ". Como vai você", "Eae","Oi tudo bem?"]
-    print(frases[random.randint(0,2)])
+    frases = ["Ola Meu name é " + name + ". Como vai você", "Eae","Oi tudo bem?"]
+    return frases[random.randint(0,2)]
 
 
-def palvra(texto):
+def save_sgestion(sugest):
+    with open("base.txt", "a+") as know:
+        know.write("Chatbot:" + sugest + "\n")
+
+def prohibited_words(text):
    
-    for p in palavrasProibidas:
-        if p in texto:
+    for p in swearWords:
+        if p in text:
             return True
         
         return  False
 
-def recebeTexto():
+def recibe_text():
         
-        texto = "Cliente" + input("Cliente: ")
+        text = "Cliente" + input("Cliente: ")
 
-        palavrasProibidas = palvra(texto)
+        swearWords = prohibited_words(text)
 
-        if palavrasProibidas == False:  
-            return texto
+        if swearWords == False:  
+            return text
         else:
-            return recebeTexto()
+            return recibe_text()
 
         
     
 
-def buscaResposta(nome, texto):
-    with open("base.txt", "a+") as conhecimento:
-        conhecimento.seek(0)
+def search_answer(name, text):
+    with open("base.txt", "a+") as know:
+        know.seek(0)
         while True:
-            viu = conhecimento.readline()
-            #print(viu)
-            if viu !="":
-                if texto.replace("Cliente: ","") == "TEM NADA AQUI ADEUS":
-                    print(nome+ ": volte sempre!")
-                    return "fim"
-                elif viu.strip() == texto.strip():
-                    proximalinha = conhecimento.readline()
-                    if "chatbo:" in proximalinha:
-                        return proximalinha
+            see = know.readline()
+            #print(see)
+            if see !="":
+                if jaccard(text, see)>0.3:
+                    nextline= know.readline()
+                    if "Chatbot:" in nextline:
+                        return nextline
             else:
-                print("Me desculpe, não tenho esse conhecimento ainda mestre")
-                conhecimento.write("\n" + texto)   
-                respota_user = input("O que esperava?\n")
-                isproibo = palvra(respota_user)
+                know.write(text)
+                return "Me desculpa não entendi"
+            #     if text.replace("Cliente: ","") == "TEM NADA AQUI ADEUS":
+            #         print(name+ ": volte sempre!")
+            #         return "fim"
+            #     elif see.strip() == text.strip():
+            #         nextLine = know.readline()
+            #         if "chatbo:" in nextLine:
+            #             return nextLine
+            # else:
+            #     print("Me desculpe, não tenho esse conhecimento ainda mestre")
+            #     know.write("\n" + text)   
+            #     userAwnser = input("O que esperava?\n")
+            #     isSwerword = prohibited_words(userAwnser)
 
-                if isproibo == False:
-                    conhecimento.write("\n" + "chatbo: " + respota_user)
-                    return "Hummmmmmmmmmmmm"    
-                return "Não pode"    
-              
+            #     if isSwerword == False:
+            #         know.write("\n" + "chatbo: " + userAwnser)
+            #         return "Hummmmmmmmmmmmm"    
+            #     return "Não pode"    
 
-def exibeResposta(resposta, nome):
-    print(resposta.replace("Chatbot", nome))
-    if resposta == "fim":
-        return "fim"
-    return "continua"
+
+def jaccard(usertext , basetext):
+    usertext = clean(usertext)
+    basetext = clean(basetext)
+
+    if len(basetext)<1 : return 0
+    else:
+        commum = 0
+        for p in usertext.split():
+            if p in basetext.split():
+                commum += 1
+        return commum/(len(basetext.split()))
+
+
+
+def clean(frase):
+    tirar=["?", "!", "...", ".", ",", "Cliente:","\n"]
+    for t in tirar:
+        frase = frase.replace(t,"")
+    frase = frase.upper()
+    return frase
+
+def display_response(resposta, name):
+    return resposta.replace("Chatbot", name)
+
