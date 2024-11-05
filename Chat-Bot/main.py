@@ -16,7 +16,6 @@ frame.grid()
 
 l_indentif = Label(frame, text="Insira a sua pergunta  neste campo")
 l_indentif.grid(row=0, column=0)
-
 e_messagem = Entry(frame)
 e_messagem.grid(row=0, column=1)
 
