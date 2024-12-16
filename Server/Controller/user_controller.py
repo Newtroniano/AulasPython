@@ -1,11 +1,17 @@
 from flask import Blueprint, request, jsonify
-from Models.user_model import get_all_users, add_user
+from Models.user_model import get_all_users, add_user, get_all_user
 
 user_bp = Blueprint('user', __name__, url_prefix='/user')
 
 @user_bp.route('/', methods=['GET'])
 def index():
     users = get_all_users()  
+    return jsonify(users)  
+
+
+@user_bp.route('/<int:user_id>', methods=['GET'])
+def getuser(user_id):
+    users = get_all_user(user_id)  
     return jsonify(users)  
 
 @user_bp.route('/add', methods=['POST'])

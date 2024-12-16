@@ -10,6 +10,18 @@ def get_all_users():
     cur.close()
     return users
 
+def get_all_user(id):
+    """Retorna todos os usuários do banco de dados."""
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT * FROM user WHERE user.id = %s', (id,))
+    users = cur.fetchall()
+    cur.close()
+    return users
+
+
+    print("aquiiiiiii", users)
+    return users
+
 def add_user(username, email, password):
     """Adiciona um novo usuário ao banco de dados."""
     cur = mysql.connection.cursor()
