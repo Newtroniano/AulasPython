@@ -1,1 +1,1 @@
-Me desculpa não entendi
+pc.greetings(nome_maquina)

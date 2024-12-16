@@ -9,8 +9,6 @@ main_window.title(nome_maquina)
 main_window.geometry("780x780")
 main_window.grid()
 
-
-
 frame = Frame(main_window)
 frame.grid()
 
@@ -23,6 +21,7 @@ frame2= Frame(main_window)
 frame2.grid(row=1, column=0)
 v = StringVar()
 Label(frame2, textvariable=v).grid()
+
 
 v.set("Qual seu nome?")
 entry_segest = False
@@ -65,10 +64,8 @@ def roda_ChatBot():
 
 
 Button(frame, text='Clique', command=roda_ChatBot).grid(row=0, column=2)
-
-pc.greetings(nome_maquina)
-
 main_window.mainloop()
+
 # while True:
 #     texto = pc.recibe_text()
 #     resposta = pc.search_answer(nome_maquina, texto)

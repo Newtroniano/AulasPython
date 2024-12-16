@@ -37,7 +37,6 @@ def search_answer(name, text):
         know.seek(0)
         while True:
             see = know.readline()
-            #print(see)
             if see !="":
                 if jaccard(text, see)>0.3:
                     nextline= know.readline()
