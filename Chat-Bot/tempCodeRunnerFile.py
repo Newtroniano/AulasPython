@@ -1,0 +1,1 @@
+pc.greetings(nome_maquina)

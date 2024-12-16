@@ -1,0 +1,8 @@
+Cliente: oi como vai
+Chatbot:vou bem e vc
+Cliente: k
+Chatbot:k
+Cliente: Ola
+Chatbot:como vai vc
+Cliente: opa
+Chatbot:ola
